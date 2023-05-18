@@ -3,6 +3,8 @@ connection: "acryl-bq"
 # include all the views
 include: "/views/**/*.view"
 
+include: "//datahub-demo/views/datahub-demo/datasets/faa_flights.view.lkml"
+
 datagroup: looker-hub_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
@@ -80,4 +82,8 @@ explore: test1_seller_categories {
     sql_on: ${test1_seller_categories.seller_id} = ${sellers.seller_id} ;;
     relationship: many_to_one
   }
+}
+
+explore: faa_flights_explore {
+  view_name: faa_flights
 }
